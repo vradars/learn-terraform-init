@@ -7,7 +7,7 @@ resource "docker_image" "nginx" {
 }
 
 resource "docker_container" "nginx" {
-  image = docker_image.nginx.latest
+  image = docker_image.nginx
   name  = "hello-terraform"
   ports {
     internal = 80
@@ -28,9 +28,10 @@ module "nginx-pet" {
 
 module "hello" {
   source  = "joatmon08/hello/random"
-  version = "3.0.1"
+  version = "3.1.0"
 
   hello = random_pet.dog.id
+  second_hello = random_pet.dog.id
 
 	secret_key = "secret"
 }
